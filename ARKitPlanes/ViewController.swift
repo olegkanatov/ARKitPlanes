@@ -57,7 +57,7 @@ class ViewController: UIViewController {
     func createBox(hitResult: ARHitTestResult) {
         
         let position = SCNVector3(hitResult.worldTransform.columns.3.x,
-                                  hitResult.worldTransform.columns.3.y + 0.05,
+                                  hitResult.worldTransform.columns.3.y + 0.05 + 0.5,
                                   hitResult.worldTransform.columns.3.z)
         
         let box = Box(atPosition: position)

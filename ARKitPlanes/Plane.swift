@@ -30,6 +30,9 @@ class Plane: SCNNode {
         
         self.geometry = planeGeometry
         
+        let physicsShape = SCNPhysicsShape(geometry: self.geometry!, options: nil)
+        self.physicsBody = SCNPhysicsBody(type: .dynamic, shape: physicsShape)
+        
         self.position = SCNVector3(anchor.center.x, 0, anchor.center.z)
         
         self.transform = SCNMatrix4MakeRotation(Float(-Double.pi / 2), 1.0, 0.0, 0.0)

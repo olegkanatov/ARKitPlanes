@@ -22,6 +22,9 @@ class Box: SCNNode {
         
         self.geometry = boxGeometry
         
+        let physicsShape = SCNPhysicsShape(geometry: self.geometry!, options: nil)
+        self.physicsBody = SCNPhysicsBody(type: .static, shape: physicsShape)
+        
         self.position = position
     }
     
