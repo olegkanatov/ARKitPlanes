@@ -47,6 +47,8 @@ class ViewController: UIViewController {
     
     @objc func placeVirtualObject(tapGesture: UITapGestureRecognizer) {
         
+        self.sceneView.scene.removeAllParticleSystems()
+        
         let sceneView = tapGesture.view as! ARSCNView
         let location = tapGesture.location(in: sceneView)
         
