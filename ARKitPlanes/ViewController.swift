@@ -23,7 +23,7 @@ class ViewController: UIViewController {
         // Show statistics such as fps and timing information
         sceneView.showsStatistics = true
         
-        //        sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints, ARSCNDebugOptions.showWorldOrigin]
+//        sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints]
         
         sceneView.autoenablesDefaultLighting = true
         
@@ -64,8 +64,13 @@ class ViewController: UIViewController {
         
         guard let virtualObject = VirtualObject.availableObjects.first else { fatalError("There is no virtual object available") }
         
-        virtualObject.position = position
         virtualObject.load()
+        virtualObject.position = position
+        
+        if let particleSystem = SCNParticleSystem(named: "Smoke.scnp", inDirectory: nil), let smokeNode = virtualObject.childNode(withName: "SmokeNode", recursively: true) {
+            
+            smokeNode.addParticleSystem(particleSystem)
+        }
         
         sceneView.scene.rootNode.addChildNode(virtualObject)
     }
